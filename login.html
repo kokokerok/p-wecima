@@ -1,0 +1,250 @@
+<!DOCTYPE html>
+<html dir="rtl" lang="ar">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>تسجيل الدخول - لوحة تحكم WeCima</title>
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <!-- Google Fonts - Cairo -->
+    <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --primary-color: #e50914;
+            --secondary-color: #221f1f;
+            --dark-color: #141414;
+            --light-color: #f4f4f4;
+            --success-color: #28a745;
+            --warning-color: #ffc107;
+            --danger-color: #dc3545;
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Cairo', sans-serif;
+        }
+        
+        body {
+            background-color: var(--dark-color);
+            color: #fff;
+            direction: rtl;
+            height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background-image: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)), url('https://via.placeholder.com/1920x1080');
+            background-size: cover;
+            background-position: center;
+        }
+        
+        .login-container {
+            width: 100%;
+            max-width: 400px;
+            padding: 30px;
+            background-color: rgba(0, 0, 0, 0.75);
+            border-radius: 5px;
+            box-shadow: 0 0 20px rgba(0, 0, 0, 0.3);
+        }
+        
+        .login-header {
+            text-align: center;
+            margin-bottom: 30px;
+        }
+        
+        .login-header h1 {
+            color: var(--primary-color);
+            font-size: 28px;
+            margin-bottom: 10px;
+        }
+        
+        .login-header p {
+            color: #aaa;
+            font-size: 14px;
+        }
+        
+        .form-group {
+            margin-bottom: 20px;
+        }
+        
+        .form-group label {
+            display: block;
+            margin-bottom: 8px;
+            font-weight: 500;
+            color: #fff;
+        }
+        
+        .form-control {
+            width: 100%;
+            padding: 12px 15px;
+            background-color: #333;
+            border: none;
+            border-radius: 4px;
+            color: #fff;
+            font-size: 14px;
+        }
+        
+        .form-control:focus {
+            outline: none;
+            background-color: #444;
+            box-shadow: 0 0 0 2px rgba(229, 9, 20, 0.25);
+        }
+        
+        .form-check {
+            display: flex;
+            align-items: center;
+            margin-bottom: 20px;
+        }
+        
+        .form-check input {
+            margin-left: 10px;
+        }
+        
+        .form-check label {
+            color: #aaa;
+            font-size: 14px;
+        }
+        
+        .btn {
+            display: block;
+            width: 100%;
+            padding: 12px;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 16px;
+            font-weight: 600;
+            text-align: center;
+            transition: all 0.3s;
+        }
+        
+        .btn-primary {
+            background-color: var(--primary-color);
+            color: #fff;
+        }
+        
+        .btn-primary:hover {
+            background-color: #c70811;
+        }
+        
+        .forgot-password {
+            text-align: center;
+            margin-top: 20px;
+        }
+        
+        .forgot-password a {
+            color: #aaa;
+            text-decoration: none;
+            font-size: 14px;
+            transition: all 0.3s;
+        }
+        
+        .forgot-password a:hover {
+            color: #fff;
+        }
+        
+        .error-message {
+            background-color: rgba(220, 53, 69, 0.2);
+            color: var(--danger-color);
+            padding: 10px;
+            border-radius: 4px;
+            margin-bottom: 20px;
+            display: none;
+        }
+        
+        .error-message.show {
+            display: block;
+        }
+        
+        .form-control.error {
+            border: 1px solid var(--danger-color);
+        }
+    </style>
+</head>
+<body>
+    <div class="login-container">
+        <div class="login-header">
+            <h1>WeCima</h1>
+            <p>تسجيل الدخول إلى لوحة التحكم</p>
+        </div>
+        
+        <div class="error-message" id="error-message">
+            <i class="fas fa-exclamation-circle"></i> اسم المستخدم أو كلمة المرور غير صحيحة
+        </div>
+        
+        <form id="login-form">
+            <div class="form-group">
+                <label for="username">اسم المستخدم</label>
+                <input type="text" class="form-control" id="username" placeholder="أدخل اسم المستخدم" required>
+            </div>
+            
+            <div class="form-group">
+                <label for="password">كلمة المرور</label>
+                <input type="password" class="form-control" id="password" placeholder="أدخل كلمة المرور" required>
+            </div>
+            
+            <div class="form-check">
+                <input type="checkbox" id="remember-me">
+                <label for="remember-me">تذكرني</label>
+            </div>
+            
+            <button type="submit" class="btn btn-primary">تسجيل الدخول</button>
+        </form>
+        
+        <div class="forgot-password">
+            <a href="#">نسيت كلمة المرور؟</a>
+        </div>
+    </div>
+    
+    <script>
+        // التحقق من صحة النموذج
+        const loginForm = document.getElementById('login-form');
+        const errorMessage = document.getElementById('error-message');
+        const usernameInput = document.getElementById('username');
+        const passwordInput = document.getElementById('password');
+        
+        loginForm.addEventListener('submit', function(e) {
+            e.preventDefault();
+            
+            // إعادة تعيين حالة الخطأ
+            errorMessage.classList.remove('show');
+            usernameInput.classList.remove('error');
+            passwordInput.classList.remove('error');
+            
+            // التحقق من الإدخال
+            const username = usernameInput.value.trim();
+            const password = passwordInput.value.trim();
+            
+            if (username === '') {
+                usernameInput.classList.add('error');
+                errorMessage.textContent = 'يرجى إدخال اسم المستخدم';
+                errorMessage.classList.add('show');
+                return;
+            }
+            
+            if (password === '') {
+                passwordInput.classList.add('error');
+                errorMessage.textContent = 'يرجى إدخال كلمة المرور';
+                errorMessage.classList.add('show');
+                return;
+            }
+            
+            // هنا يمكنك إضافة كود للتحقق من صحة بيانات تسجيل الدخول
+            // مثال: إرسال طلب AJAX إلى الخادم للتحقق من صحة البيانات
+            
+            // للتجربة فقط - تحقق بسيط
+            if (username === 'admin' && password === 'admin123') {
+                // تسجيل دخول ناجح
+                window.location.href = 'index.html';
+            } else {
+                // تسجيل دخول فاشل
+                errorMessage.textContent = 'اسم المستخدم أو كلمة المرور غير صحيحة';
+                errorMessage.classList.add('show');
+                usernameInput.classList.add('error');
+                passwordInput.classList.add('error');
+            }
+        });
+    </script>
+</body>
+</html>
