@@ -1,0 +1,22 @@
+assets/images/
+├── logo/
+│   ├── logo.png
+│   ├── logo-small.png
+│   └── favicon.ico
+├── icons/
+│   ├── movie.png
+│   ├── series.png
+│   ├── user.png
+│   └── ...
+├── backgrounds/
+│   ├── main-bg.jpg
+│   ├── admin-bg.jpg
+│   └── ...
+├── banners/
+│   ├── banner1.jpg
+│   ├── banner2.jpg
+│   └── ...
+└── ui/
+    ├── button-bg.png
+    ├── card-bg.png
+    └── ...

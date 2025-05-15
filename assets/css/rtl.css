@@ -1,0 +1,164 @@
+/**
+ * WeCima - موقع أفلام ومسلسلات
+ * ملف تنسيق CSS للغة العربية (RTL)
+ */
+
+/* ===== الاتجاه العام ===== */
+body {
+    direction: rtl;
+    text-align: right;
+    font-family: 'Cairo', 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+/* ===== القائمة الرئيسية ===== */
+.main-nav li {
+    margin-left: 0;
+    margin-right: 20px;
+}
+
+/* ===== قائمة المستخدم ===== */
+.search-form {
+    margin-right: 0;
+    margin-left: 15px;
+}
+
+.search-form button {
+    right: auto;
+    left: 10px;
+}
+
+.user-dropdown {
+    right: auto;
+    left: 0;
+}
+
+/* ===== البطاقات ===== */
+.card-rating i {
+    margin-right: 0;
+    margin-left: 5px;
+}
+
+.card-category {
+    left: auto;
+    right: 10px;
+}
+
+.card-year {
+    right: auto;
+    left: 10px;
+}
+
+/* ===== الأقسام ===== */
+.section-title {
+    padding-left: 0;
+    padding-right: 15px;
+}
+
+.section-title::before {
+    left: auto;
+    right: 0;
+}
+
+/* ===== التذييل ===== */
+.footer-widget h3::after {
+    left: auto;
+    right: 0;
+}
+
+.footer-widget ul li a:hover {
+    padding-left: 0;
+    padding-right: 5px;
+}
+
+/* ===== النماذج ===== */
+.form-group label {
+    text-align: right;
+}
+
+.form-control {
+    text-align: right;
+}
+
+/* ===== الإشعارات ===== */
+.alert {
+    padding: 15px 20px 15px 15px;
+    border-left: none;
+    border-right: 4px solid transparent;
+}
+
+.alert-success {
+    border-right-color: var(--success-color);
+}
+
+.alert-warning {
+    border-right-color: var(--warning-color);
+}
+
+.alert-danger {
+    border-right-color: var(--danger-color);
+}
+
+.alert-info {
+    border-right-color: var(--info-color);
+}
+
+/* ===== الأزرار ===== */
+.btn i {
+    margin-right: 0;
+    margin-left: 5px;
+}
+
+/* ===== الترقيم ===== */
+.pagination {
+    direction: ltr;
+}
+
+/* ===== التعليقات ===== */
+.comment-avatar {
+    float: right;
+    margin-right: 0;
+    margin-left: 15px;
+}
+
+.comment-content {
+    margin-left: 0;
+    margin-right: 65px;
+}
+
+.comment-actions {
+    text-align: left;
+}
+
+/* ===== مشغل الفيديو ===== */
+.video-controls {
+    direction: ltr;
+}
+
+/* ===== تصحيحات أخرى ===== */
+.dropdown-menu {
+    text-align: right;
+}
+
+.modal-header .close {
+    margin: -1rem auto -1rem -1rem;
+}
+
+.list-group-item {
+    text-align: right;
+}
+
+.input-group > .input-group-prepend > .input-group-text {
+    border-radius: 0 4px 4px 0;
+}
+
+.input-group > .input-group-append > .input-group-text {
+    border-radius: 4px 0 0 4px;
+}
+
+.input-group > .form-control:not(:last-child) {
+    border-radius: 0 4px 4px 0;
+}
+
+.input-group > .form-control:not(:first-child) {
+    border-radius: 4px 0 0 4px;
+}
